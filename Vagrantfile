@@ -43,13 +43,13 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
+   config.vm.provider "virtualbox" do |vb|
+     # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+  
+     # Customize the amount of memory on the VM:
+     vb.memory = "4096"
+   end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -64,8 +64,27 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y apache2
-  # SHELL
+  #
+
+  # The below wget gets Payara 4.1.151 Full profile. The list of links for 
+  # Payara 4.1.151 are:
+  #     Full....................http://bit.ly/1CGCtI9
+  #     Web.....................http://bit.ly/1DmWTUY
+  #     Minimal.................http://bit.ly/163XP6f
+  #     Embedded Full...........http://bit.ly/1zG59ls
+  #     Embedded Web............http://bit.ly/1KdVP87
+  #     Embedded Nucleus........http://bit.ly/1ydQTKw
+  #     Multi-language Full.....https://bit.ly/1zv1YeB
+  #     Multi-language Web......https://bit.ly/1wVXaZR
+  #
+  #
+   config.vm.provision "shell", inline: <<-SHELL
+     sudo apt-get -y update                        # Update the repos
+     sudo apt-get -y install openjdk-7-jdk         # Install JDK 7
+     sudo apt-get -y install unzip                 # Install unzip
+     wget http://bit.ly/1CGCtI9 -O temp.zip        # Download Payara
+     sudo mkdir -p /opt/payara                     # Make dir for Payara
+     sudo chown vagrant:vagrant /opt/payara        # Make sure vagrant owns dir
+     unzip temp.zip -d /opt/payara                 # unzip Payara to dir
+   SHELL
 end
