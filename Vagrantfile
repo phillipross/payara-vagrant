@@ -79,12 +79,12 @@ Vagrant.configure(2) do |config|
   #
   #
    config.vm.provision "shell", inline: <<-SHELL
-     sudo apt-get -y update                        # Update the repos
-     sudo apt-get -y install openjdk-7-jdk         # Install JDK 7
-     sudo apt-get -y install unzip                 # Install unzip
-     wget http://bit.ly/1CGCtI9 -O temp.zip        # Download Payara
+     sudo apt-get -qqy update                      # Update the repos
+     sudo apt-get -qqy install openjdk-7-jdk       # Install JDK 7
+     sudo apt-get -qqy install unzip               # Install unzip
+     wget -q http://bit.ly/1CGCtI9 -O temp.zip     # Download Payara
      sudo mkdir -p /opt/payara/startup             # Make dirs for Payara
-     unzip temp.zip -d /opt/payara                 # unzip Payara to dir
+     unzip -qq temp.zip -d /opt/payara             # unzip Payara to dir
      sudo cp /vagrant/payara_service-4.1.151 /opt/payara/startup/
      sudo chmod +x /opt/payara/startup/payara_service-4.1.151
      ln -s /opt/payara/startup/payara_service-4.1.151 /etc/init.d/payara
