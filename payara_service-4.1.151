@@ -7,6 +7,18 @@ PAYARA_HOME=/opt/payara/payara41
 export PAYARA_HOME
 
 
+
+start() {
+	echo -n "Starting Payara: "
+	$PAYARA_HOME/bin/asadmin start-domain 
+}
+
+stop() {
+	echo -n "Stopping Payara: "
+	$PAYARA_HOME/bin/asadmin stop-domain 
+}
+
+
 case "$1" in
 start)
     start
@@ -20,14 +32,3 @@ restart)
 \*)
     echo "usage: $0 (start|stop|restart|help)"
 esac
-
-
-start() {
-	echo -n "Starting Payara: "
-	$PAYARA_HOME/bin/asadmin start-domain 
-}
-
-stop() {
-	echo -n "Stopping Payara: "
-	$PAYARA_HOME/bin/asadmin stop-domain 
-}
