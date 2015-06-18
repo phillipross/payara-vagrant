@@ -3,7 +3,7 @@
 # Basic Payara service
 # 
 
-PAYARA_HOME=/opt/payara/payara-4.1.151/payara41
+PAYARA_HOME=/opt/payara/payara-4.1.152/payara41
 export PAYARA_HOME
 
 
