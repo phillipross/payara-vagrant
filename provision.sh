@@ -21,14 +21,15 @@ case "$PAYARA_VERSION" in
 		MULTI_LANGUAGE_WEB=https://bit.ly/1wVXaZ
 	;;
 	4.1.152)
-		FULL=http://bit.ly/1bGAaLi
-		WEB=http://bit.ly/1Kxvt2C
-		MINIMAL=http://bit.ly/1zue2io
-		MICRO=http://bit.ly/1EUuZoj
-		EMBEDDED_FULL=http://bit.ly/1JbWacf
-		EMBEDDED_WEB=http://bit.ly/1GKDanG
-		MULTI_LANGUAGE_FULL=http://bit.ly/1JUQByV
-		MULTI_LANGUAGE_WEB=http://bit.ly/1HUIIKN
+		# The below links are to 4.1.152 Patch 1
+		FULL=http://bit.ly/1czs5bH
+		WEB=http://bit.ly/1A2mXrq
+		MINIMAL=http://bit.ly/1ICWv9p
+		MICRO=http://bit.ly/1EFXzEA
+		EMBEDDED_FULL=http://bit.ly/1A21MpQ
+		EMBEDDED_WEB=http://bit.ly/1KMzD61
+		MULTI_LANGUAGE_FULL=http://bit.ly/1H4SrdQ
+		MULTI_LANGUAGE_WEB=http://bit.ly/1G8NKnd
 	;;
 \*)
 	echo "unknown version number"
