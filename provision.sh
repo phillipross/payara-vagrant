@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Properties
-#source PROPERTIES.sh
-
-
 ##########################################
 #
 # Setting properties
