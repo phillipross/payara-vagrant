@@ -6,7 +6,7 @@
 #
 
 # Payara Version
-PAYARA_VERSION=4.1.152
+PAYARA_VERSION=prerelease
 
 # Payara URLs
 case "$PAYARA_VERSION" in 
@@ -31,6 +31,17 @@ case "$PAYARA_VERSION" in
 		MULTI_LANGUAGE_FULL=http://bit.ly/1H4SrdQ
 		MULTI_LANGUAGE_WEB=http://bit.ly/1G8NKnd
 	;;
+	prerelease)
+		# The below links are to 4.1.152 Patch 1
+		FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-prerelease.zip
+		WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-web-prerelease.zip
+		MINIMAL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-minimal-prerelease.zip
+		MICRO=https://s3-eu-west-1.amazonaws.com/payara.co/payara-micro-prerelease.jar
+		EMBEDDED_FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-all-prerelease.jar
+		EMBEDDED_WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-web-prerelease.jar
+		MULTI_LANGUAGE_FULL=https://s3-eu-west-1.amazonaws.com/payara.co/payara-ml-prerelease.zip
+		MULTI_LANGUAGE_WEB=https://s3-eu-west-1.amazonaws.com/payara.co/payara-web-ml-prerelease.zip
+	;;
 \*)
 	echo "unknown version number"
 esac
@@ -50,11 +61,11 @@ echo "running update..."
 sudo apt-get -qqy update                      # Update the repos 
 
 echo "installing openjdk and unzip"
-sudo apt-get -qqy install openjdk-7-jdk       # Install JDK 7 
+sudo apt-get -qqy install openjdk-8-jdk       # Install JDK 8 
 sudo apt-get -qqy install unzip               # Install unzip 
 
 echo "Downloading Payara $PAYARA_VERSION"
-wget -q $WEB -O temp.zip > /dev/null           # Download Payara 
+wget -q $FULL -O temp.zip > /dev/null           # Download Payara 
 sudo mkdir -p $PAYARA_HOME/startup             # Make dirs for Payara 
 unzip -qq temp.zip -d $PAYARA_HOME             # unzip Payara to dir 
 
@@ -76,6 +87,9 @@ case "$PAYARA_VERSION" in
 		service payara start domain1
 		;;
 	4.1.152)
+		service payara start payaradomain
+		;;
+	prerelease)
 		service payara start payaradomain
 		;;
 	/*)
