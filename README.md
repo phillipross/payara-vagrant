@@ -15,4 +15,6 @@ Pull requests welcome.
 
 * Provision using Ansible ([initial Playbook already created by @bvansomeren here](https://github.com/bvansomeren/payara41))
 * Provision using Chef
-* Provision using Docker
+* Provision using [Payara Dockerfile](https://github.com/payara/docker)
+* Configure Apache as proxy
+* Improve parameterisation
