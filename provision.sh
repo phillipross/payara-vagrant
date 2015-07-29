@@ -73,12 +73,12 @@ echo "starting Payara..."
 
 case "$PAYARA_VERSION" in
 	4.1.151)
-		service payara start domain1
+		su - vagrant -c 'service payara start domain1'
 		;;
 	4.1.152)
-		service payara start payaradomain
+		su - vagrant -c 'service payara start payaradomain'
 		;;
 	/*)
 		echo "Unknown Payara version, attempting to start domain1..."
-		service payara start domain1
+		su - vagrant -c 'service payara start domain1'
 esac
