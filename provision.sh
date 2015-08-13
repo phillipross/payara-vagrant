@@ -6,7 +6,7 @@
 #
 
 # Payara Version
-PAYARA_VERSION=4.1.152
+PAYARA_VERSION=4.1.153
 
 # Payara URLs
 case "$PAYARA_VERSION" in 
@@ -30,6 +30,17 @@ case "$PAYARA_VERSION" in
 		EMBEDDED_WEB=http://bit.ly/1KMzD61
 		MULTI_LANGUAGE_FULL=http://bit.ly/1H4SrdQ
 		MULTI_LANGUAGE_WEB=http://bit.ly/1G8NKnd
+	;;
+	4.1.153)
+		# The below links are to 4.1.153
+		FULL=http://bit.ly/1I4tz9r
+		WEB=http://bit.ly/1IaXo67
+		MINIMAL=http://bit.ly/1OQGy0K
+		MICRO=http://bit.ly/1JTP36N
+		EMBEDDED_FULL=http://bit.ly/1h7MeZ6
+		EMBEDDED_WEB=http://bit.ly/1DS74QT
+		MULTI_LANGUAGE_FULL=http://bit.ly/1Sk4NKm
+		MULTI_LANGUAGE_WEB=http://bit.ly/1H6pcXw
 	;;
 \*)
 	echo "unknown version number"
@@ -58,6 +69,13 @@ wget -q $WEB -O temp.zip > /dev/null           # Download Payara
 sudo mkdir -p $PAYARA_HOME/startup             # Make dirs for Payara 
 unzip -qq temp.zip -d $PAYARA_HOME             # unzip Payara to dir 
 
+#########################################
+#
+#  Delete or comment out from here down 
+#  for Micro/Embedded versions
+#
+#########################################
+
 # Copy startup script, and create service
 echo "installing startup scripts"
 sudo cp /vagrant/payara_service-$PAYARA_VERSION $PAYARA_HOME/startup/ 
@@ -71,11 +89,15 @@ sudo chown -R vagrant:vagrant $PAYARA_HOME     # Make sure vagrant owns dir
 
 echo "starting Payara..."
 
+# Explicitly start payaradomain by default
 case "$PAYARA_VERSION" in
 	4.1.151)
 		su - vagrant -c 'service payara start domain1'
 		;;
 	4.1.152)
+		su - vagrant -c 'service payara start payaradomain'
+		;;
+	4.1.153)
 		su - vagrant -c 'service payara start payaradomain'
 		;;
 	/*)
