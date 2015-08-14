@@ -10,11 +10,3 @@ There is still work to be done, but at this point, the file is usable for develo
 The installation scripts will work with any Payara (simply specify `FULL` or `MICRO` etc on the `wget` line) but the configuration script to install Payara as a service will ***NOT*** work with the embedded/micro/nucleus versions. (They're just JARs...what would you expect??)
 
 Pull requests welcome.
-
-### TODO
-
-* Provision using Ansible ([initial Playbook already created by @bvansomeren here](https://github.com/bvansomeren/payara41))
-* Provision using Chef
-* Provision using [Payara Dockerfile](https://github.com/payara/docker)
-* Configure Apache as proxy
-* Improve parameterisation
