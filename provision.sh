@@ -99,8 +99,6 @@ installService() {
 	echo "Adding payara system startup..."
 	sudo update-rc.d payara defaults > /dev/null 
 	
-	#sudo chown -R vagrant:vagrant $PAYARA_HOME     # Make sure vagrant owns dir 
-	
 	echo "starting Payara..."
 	
 	# Explicitly start payaradomain by default
@@ -112,6 +110,9 @@ installService() {
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		4.1.153)
+			su - vagrant -c 'service payara start payaradomain'
+			;;
+		PRE-RELEASE)
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		/*)
