@@ -46,12 +46,23 @@ case "$PAYARA_VERSION" in
 		MULTI_LANGUAGE_FULL=http://bit.ly/1Sk4NKm
 		MULTI_LANGUAGE_WEB=http://bit.ly/1H6pcXw
 	;;
+	PRE-RELEASE)
+		# The below links are to the latest successful build
+		FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-prerelease.zip
+		WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-web-prerelease.zip
+		MINIMAL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-minimal-prerelease.zip
+		MICRO=https://s3-eu-west-1.amazonaws.com/payara.co/payara-micro-prerelease.jar
+		EMBEDDED_FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-all-prerelease.jar
+		EMBEDDED_WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-web-prerelease.jar
+		MULTI_LANGUAGE_FULL=https://s3-eu-west-1.amazonaws.com/payara.co/payara-ml-prerelease.zip
+		MULTI_LANGUAGE_WEB=https://s3-eu-west-1.amazonaws.com/payara.co/payara-web-ml-prerelease.zip
+	;;
 \*)
 	echo "unknown version number"
 esac
 
 # Payara edition (Full, Web, Micro, etc., from above list)
-PAYARA_ED=$MINIMAL
+PAYARA_ED=$WEB
 
 #
 #
@@ -88,8 +99,6 @@ installService() {
 	echo "Adding payara system startup..."
 	sudo update-rc.d payara defaults > /dev/null 
 	
-	#sudo chown -R vagrant:vagrant $PAYARA_HOME     # Make sure vagrant owns dir 
-	
 	echo "starting Payara..."
 	
 	# Explicitly start payaradomain by default
@@ -101,6 +110,9 @@ installService() {
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		4.1.153)
+			su - vagrant -c 'service payara start payaradomain'
+			;;
+		PRE-RELEASE)
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		/*)
