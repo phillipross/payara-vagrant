@@ -21,10 +21,10 @@ stop() {
 
 case "$1" in
 start)
-    start $2
+    start ${2:-payaradomain}
     ;;
 stop)
-    stop $2
+    stop ${2:-payaradomain}
     ;;
 restart)
     $PAYARA_HOME/bin/asadmin restart-domain >/dev/null
