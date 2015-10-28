@@ -4,6 +4,8 @@ Vagrantfile for Payara.
 
 Currently it uses ubuntu/trusty64 as a base and gets the Java EE Web profile of Payara 4.1.1.154, extracting to /opt/payara/payara-$PAYARA_VERSION.  The provision.sh script contains PAYARA_VERSION and PAYARA_ED variables which can be changed to point to a different version/edition of Payara.  OpenJDK 7 is installed, since that is the latest Java currently available in the Ubuntu repos.
 
+During provisioning, both domains (`domain1` and `payaradomain`) are configured to enable secure admin mode with a username of `admin` and password of `payara0payara`.
+
 There is still work to be done, but at this point, the file is usable for development/testing purposes.
 
 ### WARNING

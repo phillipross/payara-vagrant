@@ -95,7 +95,21 @@ installPayara() {
 	wget -q $PAYARA_ED -O temp.zip > /dev/null    # Download Payara 
 	sudo mkdir -p $PAYARA_HOME                    # Make dirs for Payara 
 	unzip -qq temp.zip -d $PAYARA_HOME            # unzip Payara to dir 
-	sudo chown -R vagrant:vagrant $PAYARA_HOME    # Make sure vagrant owns dir 
+
+        echo "Enabling secure admin mode for domains (u/p = admin/payara0payara)"
+        PWDFILE=/tmp/pwdfile
+        DOMAINS_DIR="${PAYARA_HOME}/payara41/glassfish/domains"
+        echo "AS_ADMIN_PASSWORD=payara0payara" > ${PWDFILE}
+        for DOMAIN in domain1 payaradomain; do
+           echo "admin;{SSHA256}Rzyr/2/C1Zv+iZyIn/VnL0zDYESs8nTH8t/OMlOpazehMGn5L9ejkg==;asadmin" > "${DOMAINS_DIR}/${DOMAIN}/config/admin-keyfile"
+           ${PAYARA_HOME}/payara41/bin/asadmin start-domain ${DOMAIN}
+           ${PAYARA_HOME}/payara41/bin/asadmin --user admin --passwordfile "${PWDFILE}" enable-secure-admin
+           ${PAYARA_HOME}/payara41/bin/asadmin stop-domain ${DOMAIN}
+        done
+        rm "${PWDFILE}"
+
+        echo "Setting ownership of ${PAYARA_HOME} content"
+	sudo chown -R vagrant:vagrant $PAYARA_HOME    # Make sure vagrant owns dir
 }
 
 
