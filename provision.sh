@@ -6,7 +6,7 @@
 #
 
 # Payara Version
-PAYARA_VERSION=4.1.153
+PAYARA_VERSION=4.1.1.154
 
 # Payara directory
 PAYARA_HOME=/opt/payara/payara-$PAYARA_VERSION
@@ -45,6 +45,17 @@ case "$PAYARA_VERSION" in
 		EMBEDDED_WEB=http://bit.ly/1DS74QT
 		MULTI_LANGUAGE_FULL=http://bit.ly/1Sk4NKm
 		MULTI_LANGUAGE_WEB=http://bit.ly/1H6pcXw
+	;;
+	4.1.1.154)
+		# The below links are to 4.1.1.154
+		FULL=http://bit.ly/1Gm0GIw
+		WEB=http://bit.ly/1S0EEMI
+		MINIMAL=http://bit.ly/1LrpLAz
+		MICRO=http://bit.ly/1W9d2Lb
+		EMBEDDED_FULL=http://bit.ly/1W8PyAw
+		EMBEDDED_WEB=http://bit.ly/1Ktz9zG
+		MULTI_LANGUAGE_FULL=http://bit.ly/1i0pKJm
+		MULTI_LANGUAGE_WEB=http://bit.ly/1NXOVus
 	;;
 	PRE-RELEASE)
 		# The below links are to the latest successful build
@@ -110,6 +121,9 @@ installService() {
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		4.1.153)
+			su - vagrant -c 'service payara start payaradomain'
+			;;
+		4.1.1.154)
 			su - vagrant -c 'service payara start payaradomain'
 			;;
 		PRE-RELEASE)
