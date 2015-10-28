@@ -17,10 +17,6 @@ case "$PAYARA_VERSION" in
 	4.1.151)
 		FULL=http://bit.ly/1CGCtI9
 		WEB=http://bit.ly/1DmWTUY
-		MINIMAL=http://bit.ly/163XP6f
-		EMBEDDED_FULL=http://bit.ly/1zG59ls
-		EMBEDDED_WEB=http://bit.ly/1KdVP87
-		EMBEDDED_NUCLEUS=http://bit.ly/1ydQTKw
 		MULTI_LANGUAGE_FULL=https://bit.ly/1zv1YeB
 		MULTI_LANGUAGE_WEB=https://bit.ly/1wVXaZ
 	;;
@@ -28,10 +24,6 @@ case "$PAYARA_VERSION" in
 		# The below links are to 4.1.152 Patch 1
 		FULL=http://bit.ly/1czs5bH
 		WEB=http://bit.ly/1A2mXrq
-		MINIMAL=http://bit.ly/1ICWv9p
-		MICRO=http://bit.ly/1EFXzEA
-		EMBEDDED_FULL=http://bit.ly/1A21MpQ
-		EMBEDDED_WEB=http://bit.ly/1KMzD61
 		MULTI_LANGUAGE_FULL=http://bit.ly/1H4SrdQ
 		MULTI_LANGUAGE_WEB=http://bit.ly/1G8NKnd
 	;;
@@ -39,10 +31,6 @@ case "$PAYARA_VERSION" in
 		# The below links are to 4.1.153
 		FULL=http://bit.ly/1I4tz9r
 		WEB=http://bit.ly/1IaXo67
-		MINIMAL=http://bit.ly/1OQGy0K
-		MICRO=http://bit.ly/1JTP36N
-		EMBEDDED_FULL=http://bit.ly/1h7MeZ6
-		EMBEDDED_WEB=http://bit.ly/1DS74QT
 		MULTI_LANGUAGE_FULL=http://bit.ly/1Sk4NKm
 		MULTI_LANGUAGE_WEB=http://bit.ly/1H6pcXw
 	;;
@@ -50,10 +38,6 @@ case "$PAYARA_VERSION" in
 		# The below links are to 4.1.1.154
 		FULL=http://bit.ly/1Gm0GIw
 		WEB=http://bit.ly/1S0EEMI
-		MINIMAL=http://bit.ly/1LrpLAz
-		MICRO=http://bit.ly/1W9d2Lb
-		EMBEDDED_FULL=http://bit.ly/1W8PyAw
-		EMBEDDED_WEB=http://bit.ly/1Ktz9zG
 		MULTI_LANGUAGE_FULL=http://bit.ly/1i0pKJm
 		MULTI_LANGUAGE_WEB=http://bit.ly/1NXOVus
 	;;
@@ -61,10 +45,6 @@ case "$PAYARA_VERSION" in
 		# The below links are to the latest successful build
 		FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-prerelease.zip
 		WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-web-prerelease.zip
-		MINIMAL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-minimal-prerelease.zip
-		MICRO=https://s3-eu-west-1.amazonaws.com/payara.co/payara-micro-prerelease.jar
-		EMBEDDED_FULL=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-all-prerelease.jar
-		EMBEDDED_WEB=http://payara.co.s3-website-eu-west-1.amazonaws.com/payara-embedded-web-prerelease.jar
 		MULTI_LANGUAGE_FULL=https://s3-eu-west-1.amazonaws.com/payara.co/payara-ml-prerelease.zip
 		MULTI_LANGUAGE_WEB=https://s3-eu-west-1.amazonaws.com/payara.co/payara-web-ml-prerelease.zip
 	;;
@@ -72,7 +52,7 @@ case "$PAYARA_VERSION" in
 	echo "unknown version number"
 esac
 
-# Payara edition (Full, Web, Micro, etc., from above list)
+# Payara edition (Full, Web, etc., from above list)
 PAYARA_ED=$WEB
 
 #
